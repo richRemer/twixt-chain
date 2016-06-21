@@ -10,10 +10,11 @@ function chain(...fns) {
      */
     return function() {
         var fn,
+            functions = fns.slice(),
             args = Array.prototype.slice.call(arguments),
             result;
         
-        while (fn = fns.shift()) {
+        while (fn = functions.shift()) {
             result = fn.apply(this, args);
             
             if (fn.length) {
